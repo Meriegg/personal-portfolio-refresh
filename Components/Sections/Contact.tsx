@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
     message: yup.string().required(),
   });
 
-  const { handleChange, values, errors, handleSubmit } = useFormik({
+  const { handleChange, values, errors, handleSubmit, resetForm } = useFormik({
     validateOnChange: hasSubmittedForm,
     initialValues,
     validationSchema,
@@ -42,6 +42,7 @@ const Contact: React.FC = () => {
         toast.success(data?.data?.message || "Email sent successfully!");
 
         setSubmitting(false);
+        resetForm();
       } catch (error: any) {
         console.error(error);
 
