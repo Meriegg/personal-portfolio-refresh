@@ -8,14 +8,11 @@ import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import { motion } from "framer-motion";
 import { defaultAnimationEasing } from "../../Animations";
-import { MyContext } from "../Context/Context";
 import * as yup from "yup";
 
 const Contact: React.FC = () => {
   const [hasSubmittedForm, setSubmittedForm] = React.useState<boolean>(false);
   const [isSubmitting, setSubmitting] = React.useState<boolean>(false);
-  const globalState = React.useContext(MyContext);
-  const sectionRef = React.useRef(null);
 
   const initialValues = {
     name: "",
@@ -58,15 +55,8 @@ const Contact: React.FC = () => {
     },
   });
 
-  React.useEffect(() => {
-    let tempSections = globalState.currentSections;
-    tempSections.push(sectionRef.current);
-
-    globalState.setCurrentSections(tempSections);
-  }, []);
-
   return (
-    <section id="contact" ref={sectionRef} className={styles.section}>
+    <section data-native-section id="contact" className={styles.section}>
       <motion.p
         initial={{ opacity: 0, x: -150 }}
         whileInView={{

@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "../../styles/Sections/About.module.scss";
 import Link from "next/link";
-import { MyContext } from "../Context/Context";
 import { motion } from "framer-motion";
 import { defaultAnimationEasing } from "../../Animations";
 
@@ -22,18 +21,8 @@ const linkVariants = {
 };
 
 const AboutSection: React.FC = () => {
-  const sectionRef = React.useRef(null);
-  const globalState = React.useContext(MyContext);
-
-  React.useEffect(() => {
-    let tempSections = globalState.currentSections;
-    tempSections.push(sectionRef.current);
-
-    globalState.setCurrentSections(tempSections);
-  }, []);
-
   return (
-    <section id="about" ref={sectionRef} className={styles.section}>
+    <section data-native-section id="about" className={styles.section}>
       <motion.p
         initial={{
           opacity: 0,

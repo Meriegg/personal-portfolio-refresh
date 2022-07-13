@@ -1,9 +1,8 @@
 import React from "react";
-import styles from "../../../styles/Sections/Projects.module.scss";
+import styles from "../../styles/Sections/Projects.module.scss";
 import Link from "next/link";
-import { MyContext } from "../../Context/Context";
 import { motion } from "framer-motion";
-import { defaultAnimationEasing } from "../../../Animations";
+import { defaultAnimationEasing } from "../../Animations";
 
 const linkVariants = {
   initial: {
@@ -22,16 +21,6 @@ const linkVariants = {
 };
 
 const Projects: React.FC = () => {
-  const globalState = React.useContext(MyContext);
-  const sectionRef = React.useRef(null);
-
-  React.useEffect(() => {
-    let tempSections = globalState.currentSections;
-    tempSections.push(sectionRef.current);
-
-    globalState.setCurrentSections(tempSections);
-  }, []);
-
   const projects = [
     {
       header: "EliFlor Brand",
@@ -49,7 +38,7 @@ const Projects: React.FC = () => {
 
   return (
     <>
-      <section id="myprojects" ref={sectionRef} className={styles.section}>
+      <section data-native-section id="myprojects" className={styles.section}>
         <motion.h1
           initial={{
             y: -60,

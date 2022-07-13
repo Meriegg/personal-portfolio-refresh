@@ -11,9 +11,25 @@ const SectionManager: React.FC = () => {
 
   const observerCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
+      const allNativeSections = document.querySelectorAll(
+        "[data-native-section]"
+      );
+      if (!allNativeSections) return;
+
+      let allNativeParsedSections: HTMLElement[] = [];
+      allNativeSections.forEach((section) => {
+        allNativeParsedSections.push(
+          document.getElementById(section.id) as HTMLElement
+        );
+      });
+
       if (entry.intersectionRatio > 0.25) {
+        const parsedEntryTarget = document.getElementById(
+          entry.target.id
+        ) as HTMLElement;
+
         globalState.setActiveSectionId(
-          globalState.currentSections.indexOf(entry.target)
+          allNativeParsedSections.indexOf(parsedEntryTarget)
         );
       }
     });
@@ -45,13 +61,18 @@ const SectionManager: React.FC = () => {
   );
 
   React.useEffect(() => {
+    const allNativeSections = document.querySelectorAll(
+      "[data-native-section]"
+    );
+    if (!allNativeSections) return;
+
     const observer = new IntersectionObserver(
       observerCallback,
       observerOptions
     );
-    globalState.currentSections.forEach((section: HTMLElement) => {
-      observer.observe(section);
-    });
+    allNativeSections.forEach((nativeSection) =>
+      observer.observe(nativeSection)
+    );
 
     // Detect Section Color Observer
     const allSections = document.querySelectorAll("section");

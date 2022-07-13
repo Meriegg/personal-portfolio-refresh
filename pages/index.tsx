@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 
 import HelloSection from "../Components/Sections/Hello";
 import AboutSection from "../Components/Sections/About";
-import Projects from "../Components/Sections/projects/Projects";
+import Projects from "../Components/Sections/Projects";
 import Contact from "../Components/Sections/Contact";
 
 const Home: NextPage = () => {

@@ -1,22 +1,11 @@
 import React from "react";
 import styles from "../../styles/Sections/Hello.module.scss";
-import { MyContext } from "../Context/Context";
 import { defaultAnimationEasing } from "../../Animations";
 import { motion } from "framer-motion";
 
 const HelloSection: React.FC = () => {
-  const globalState = React.useContext(MyContext);
-  const sectionRef = React.useRef(null);
-
-  React.useEffect(() => {
-    let tempSections = globalState.currentSections;
-    tempSections.push(sectionRef.current);
-
-    globalState.setCurrentSections(tempSections);
-  }, []);
-
   return (
-    <section id="hello" ref={sectionRef} className={styles.section}>
+    <section data-native-section id="hello" className={styles.section}>
       <motion.h1
         initial={{
           opacity: 0,
