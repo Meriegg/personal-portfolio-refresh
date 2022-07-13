@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
         setSubmitting(true);
 
         const data = await axios.post(
-          "http://localhost:3000/api/mailMe",
+          "https://mariodev.vercel.app/api/mailMe",
           values
         );
 
