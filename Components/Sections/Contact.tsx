@@ -81,7 +81,7 @@ const Contact: React.FC = () => {
         }}
         className={styles.section_header}
       >
-        Lets get you on started!
+        Lets get you started!
       </motion.h1>
 
       <motion.form

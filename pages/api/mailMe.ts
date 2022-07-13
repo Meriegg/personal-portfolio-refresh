@@ -14,6 +14,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     let transporter = nodemailer.createTransport({
       host: "https://mariodev.vercel.app",
       secure: true,
+      service: "gmail",
+
       auth: {
         user: process.env.ACCOUNT_EMAIL,
         pass: process.env.ACCOUNT_PASS,
