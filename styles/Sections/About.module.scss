@@ -1,0 +1,42 @@
+@import "../variables";
+
+.section {
+  background: #000;
+  @include sectionMargin();
+
+  &_subHeader {
+    font-size: 1.5rem;
+    color: $text-secondary-dark;
+  }
+
+  &_header {
+    color: $text-primary-dark;
+    font-size: 6rem;
+    margin: 0;
+    @include mq("tablet") {
+      font-size: 4rem;
+    }
+    @include mq("mobile") {
+      font-size: 3rem;
+    }
+  }
+
+  &_linkContainer {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  &_link {
+    color: $text-secondary-dark;
+    font-size: 2.25rem;
+    text-decoration: none;
+    cursor: pointer;
+    @include transition();
+
+    &:hover {
+      color: $text-primary-dark;
+    }
+  }
+}

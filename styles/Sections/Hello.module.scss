@@ -1,0 +1,30 @@
+@import "../variables";
+
+.section {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
+  margin-bottom: 10px;
+  padding-top: 100px;
+  background: #fff;
+
+  &_header {
+    font-size: 96px;
+    text-align: center;
+
+    @include mq("tablet") {
+      font-size: 64px;
+    }
+  }
+
+  &_scrollDown {
+    position: absolute;
+    left: 50%;
+    top: 70vh;
+    transform: translateX(-50%);
+    letter-spacing: -1px;
+    text-align: center;
+  }
+}

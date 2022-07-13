@@ -1,0 +1,245 @@
+@import "../variables";
+
+.openMenuBtn {
+  background: none;
+  border: none;
+  display: flex;
+  height: 32px;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  cursor: pointer;
+  @include transition();
+
+  &_label {
+    @include transition();
+  }
+
+  &_lines {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    @include transition();
+  }
+
+  &_line {
+    width: 15px;
+    height: 2px;
+    background-color: $text-primary-light;
+    border-radius: 1000px;
+    position: relative;
+    @include transition();
+
+    &::after,
+    &::before {
+      content: "";
+      height: 2px;
+      width: 25px;
+      background-color: $text-primary-light;
+      position: absolute;
+      left: 0;
+      border-radius: 1000px;
+      @include transition();
+    }
+
+    &::after {
+      top: 7px;
+    }
+
+    &::before {
+      top: -7px;
+    }
+  }
+}
+
+.openMenuBtn_open {
+  @extend .openMenuBtn;
+
+  &_label {
+    margin-left: 10px;
+  }
+
+  &_lines {
+    @extend .openMenuBtn_lines;
+  }
+
+  &_line {
+    @extend .openMenuBtn_line;
+    background: transparent;
+    width: 0;
+
+    &::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+  }
+}
+
+.navbar {
+  position: relative;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  @include paddingY(30px);
+  @include paddingX(80px);
+  @include mq("tablet") {
+    @include paddingX(40px);
+  }
+  @include mq("mobile") {
+    @include paddingX(20px);
+  }
+
+  &_open {
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 120;
+  }
+
+  &_myLogo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: auto;
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  opacity: 0;
+  background-color: #fff;
+  z-index: -10;
+  @include transition();
+  @include paddingX(80px);
+  @include mq("tablet") {
+    @include paddingX(40px);
+  }
+  @include mq("mobile") {
+    @include paddingX(20px);
+  }
+
+  &_copyright {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    letter-spacing: -1px;
+    color: $text-primary-light;
+    font-weight: GetFontWeight("bold");
+  }
+
+  &_content {
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    * {
+      flex-grow: 1;
+    }
+  }
+
+  &_nav {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &_link {
+      font-size: 96px;
+      margin: 0;
+      text-decoration: none;
+      color: $text-secondary-light;
+      font-weight: GetFontWeight("extrabold");
+      @include transition();
+      @include mq("tablet") {
+        font-size: 64px;
+      }
+      @include mq("mobile") {
+        font-size: 36px;
+      }
+
+      &:hover {
+        color: $text-primary-light;
+        transform: translateX(10px);
+      }
+    }
+  }
+
+  &_contact {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+
+    &_link {
+      position: relative;
+      cursor: pointer;
+      font-size: 1.5rem;
+      margin: 0;
+      width: fit-content;
+      word-break: break-word;
+      @include transition(all, 0.2s, ease);
+
+      &:hover {
+        transform: scale(0.95);
+
+        &::before {
+          transform: skew(0, 0) rotate(0) translateY(0);
+          opacity: 1;
+          z-index: 30;
+        }
+      }
+
+      &:active {
+        transform: scale(0.9);
+        transition: all 0.1s ease !important;
+
+        &::before {
+          content: "copied!";
+        }
+      }
+
+      &::before {
+        content: "copy!";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 1px;
+        width: 100%;
+        height: 100%;
+        z-index: -30;
+        opacity: 0;
+        background: rgba(255, 255, 255, 0.8);
+        transform: skew(0, 10deg) rotate(10deg) translateY(250px);
+        font-size: 1rem;
+        @include transition(all, 0.4s, ease);
+      }
+    }
+
+    &_header {
+      color: $text-secondary-light;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  &_open {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 110;
+  }
+}

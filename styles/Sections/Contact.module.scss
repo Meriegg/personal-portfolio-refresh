@@ -1,0 +1,23 @@
+@import "../variables";
+
+.section {
+  background: #000;
+  @include sectionMargin();
+
+  &_form {
+    max-width: 550px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_subHeader {
+    color: $text-secondary-dark;
+  }
+
+  &_header {
+    color: $text-primary-dark;
+    margin: 0;
+    @include sectionHeader();
+  }
+}

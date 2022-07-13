@@ -1,0 +1,30 @@
+@import "../variables";
+
+.button {
+  background: $text-primary-dark;
+  color: $text-primary-light;
+  border-radius: 1000px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  cursor: pointer;
+  @include paddingX(35px);
+  @include paddingY(15px);
+  @include transition();
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &:active {
+    transition: all 0.1s ease !important;
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: translateY(0) !important;
+    }
+  }
+}

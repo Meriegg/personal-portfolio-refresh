@@ -1,0 +1,38 @@
+@import "../variables";
+
+.inputContainer {
+  @include marginY(10px);
+}
+
+.input {
+  padding: 20px;
+  background: none;
+  color: $text-primary-dark;
+  border: 1px solid $text-secondary-dark;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: getFontWeight("bold");
+  transition: all 0.3s ease;
+  width: 100%;
+  font-weight: GetFontWeight("medium");
+
+  &::placeholder {
+    color: $text-secondary-dark;
+  }
+
+  &:focus {
+    outline: none;
+    border: 2px solid $text-primary-dark;
+  }
+
+  &_error {
+    border: 2px solid lighten(red, 15%);
+  }
+}
+
+.inputError {
+  margin: 0;
+  font-size: toRem(14px);
+  font-weight: GetFontWeight("medium");
+  color: lighten(red, 15%);
+}

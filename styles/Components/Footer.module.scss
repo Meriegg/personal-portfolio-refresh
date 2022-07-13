@@ -1,0 +1,10 @@
+@import "../variables";
+
+.footer {
+  margin-top: 30px;
+  color: $text-primary-dark;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: GetFontWeight("medium");
+}

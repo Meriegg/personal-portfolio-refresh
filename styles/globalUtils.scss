@@ -1,0 +1,12 @@
+section {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  z-index: 40;
+  scroll-snap-align: start;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 0;
+}

@@ -1,0 +1,117 @@
+@import "../variables";
+
+.sectionManager {
+  position: fixed;
+  z-index: 100;
+  right: 30px;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transform: translateY(-50%);
+  @include mq("tablet") {
+    right: 15px;
+  }
+
+  [data-section-bg="rgb(0, 0, 0)"] {
+    &:hover {
+      &::after {
+        background: $text-primary-dark !important;
+      }
+
+      p {
+        color: $text-primary-dark;
+      }
+    }
+
+    p {
+      color: $text-primary-dark;
+    }
+  }
+
+  [data-section-bg="rgb(255, 255, 255)"] {
+    &:hover {
+      &::after {
+        background: $text-primary-light !important;
+      }
+
+      p {
+        color: $text-primary-light;
+      }
+    }
+
+    p {
+      color: $text-primary-light;
+    }
+  }
+
+  &_itemActive[data-section-bg="rgb(255, 255, 255)"] {
+    &::after {
+      background-color: $text-primary-light !important;
+    }
+  }
+
+  &_itemActive[data-section-bg="rgb(0, 0, 0)"] {
+    &::after {
+      background-color: $text-primary-dark !important;
+    }
+  }
+
+  &_itemActive {
+    &::after {
+      transform: scale(1) !important;
+    }
+
+    p {
+      transform: scaleX(1) !important;
+    }
+  }
+
+  &_separator {
+    width: 1px;
+    height: 25px;
+    background: $text-secondary-dark;
+    margin-right: 7px;
+  }
+
+  &_item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-top: 5px;
+    cursor: pointer;
+    @include transition();
+
+    &:hover {
+      &::after {
+        background-color: $text-primary-light;
+        transform: scale(1);
+      }
+
+      p {
+        transform: scaleX(1);
+        color: $text-primary-light;
+      }
+    }
+
+    p {
+      margin: 0;
+      transform: scaleX(0);
+      transform-origin: right;
+      color: $text-secondary-light;
+      text-decoration: none;
+      @include transition();
+    }
+
+    &::after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      border-radius: 999999px;
+      margin-left: 10px;
+      transform: scale(0.9);
+      background: $text-secondary-dark;
+      @include transition();
+    }
+  }
+}

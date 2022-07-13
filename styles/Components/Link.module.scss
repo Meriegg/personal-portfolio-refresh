@@ -1,0 +1,23 @@
+@import "../variables";
+
+.link {
+  text-decoration: none;
+  font-weight: GetFontWeight("bold");
+  @include transition();
+
+  &_light {
+    color: $text-secondary-light;
+
+    &:hover {
+      color: $text-primary-light;
+    }
+  }
+
+  &_dark {
+    color: $text-secondary-dark;
+
+    &:hover {
+      color: $text-primary-dark;
+    }
+  }
+}

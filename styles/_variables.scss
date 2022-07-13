@@ -1,0 +1,84 @@
+$tight-letter-spacing: -0.05em;
+$text-primary-light: #000;
+$text-primary-dark: #fff;
+$text-secondary-light: #4b5563;
+$text-secondary-dark: #d1d5db;
+
+$font-weights: (
+  "medium": 500,
+  "semibold": 600,
+  "bold": 700,
+  "extrabold": 800,
+);
+
+@function GetFontWeight($weight) {
+  @return map-get($map: $font-weights, $key: to-lower-case($weight));
+}
+
+$break-points: (
+  "desktop": 1440px,
+  "tablet": 834px,
+  "mobile": 425px,
+);
+
+@function getBreakpoint($break-point) {
+  @return map-get($map: $break-points, $key: to-lower-case($break-point));
+}
+
+@mixin mq($break-point) {
+  @media screen and (max-width: getBreakpoint($break-point)) {
+    @content;
+  }
+}
+
+@mixin paddingY($spacing: 10px) {
+  padding-top: $spacing;
+  padding-bottom: $spacing;
+}
+
+@mixin paddingX($spacing: 10px) {
+  padding-left: $spacing;
+  padding-right: $spacing;
+}
+
+@mixin marginY($spacing: 10px) {
+  margin-top: $spacing;
+  margin-bottom: $spacing;
+}
+
+@mixin marginX($spacing: 10px) {
+  margin-left: $spacing;
+  margin-right: $spacing;
+}
+
+@mixin transition($selector: all, $duration: 0.3s, $easing: ease) {
+  transition: $selector $duration $easing;
+}
+
+@mixin sectionMargin() {
+  padding: 60px;
+  @include mq("tablet") {
+    padding: 40px;
+  }
+  @include mq("mobile") {
+    padding: 20px;
+  }
+}
+
+@mixin sectionHeader() {
+  font-size: 6rem;
+  @include mq("tablet") {
+    font-size: 4rem;
+  }
+  @include mq("mobile") {
+    font-size: 3rem;
+  }
+}
+
+@mixin Globals() {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: $tight-letter-spacing;
+  box-sizing: border-box;
+  font-weight: GetFontWeight("bold");
+  font-style: normal;
+}
