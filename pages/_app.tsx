@@ -3,7 +3,7 @@ import { ContextProvider } from "../Components/Context/Context";
 import type { AppProps } from "next/app";
 
 import "../styles/globals.scss";
-// import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
