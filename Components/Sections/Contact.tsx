@@ -42,14 +42,14 @@ const Contact: React.FC = () => {
           values
         );
 
-        toast.success(data.data.message);
+        toast.success(data?.data?.message || "Email sent successfully!");
 
         setSubmitting(false);
       } catch (error: any) {
         console.error(error);
 
         toast.error(
-          error.response.data.message ||
+          error?.response?.data?.message ||
             "An error happened. Try copying my contact information from the menu!"
         );
 
