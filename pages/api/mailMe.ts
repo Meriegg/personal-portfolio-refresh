@@ -14,9 +14,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const ACCOUNT_EMAIL = process.env.ACCOUNT_EMAIL;
     const ACCOUNT_PASS = process.env.ACCOUNT_PASS;
 
-    console.log(ACCOUNT_EMAIL);
-    console.log(ACCOUNT_PASS);
-
     let transporter = nodemailer.createTransport({
       host: "https://mariodev.vercel.app",
       secure: true,
@@ -29,8 +26,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     await transporter.sendMail({
-      from: body.email,
-      to: process.env.ACCOUNT_PASS,
+      from: ACCOUNT_EMAIL,
+      to: ACCOUNT_EMAIL,
       subject: `From ${body.name} - ${body.email}`,
       html: `<p>this email was sent by ${body.email}</p> <br /> ${body.message}`,
     });

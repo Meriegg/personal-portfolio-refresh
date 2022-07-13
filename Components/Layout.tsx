@@ -1,6 +1,6 @@
 import React from "react";
 import Nav from "./Nav/Nav";
-import SectionManager from "./Sections/SectionManager";
+import Head from "next/head";
 import { ToastContainer, toast } from "react-toastify";
 
 interface Props {
@@ -10,6 +10,9 @@ interface Props {
 const Layout: React.FC<Props> = ({ children }) => {
   return (
     <>
+      <Head>
+        <title>Mariodev | Developer | Designer</title>
+      </Head>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
